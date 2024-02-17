@@ -3,7 +3,8 @@ import {Button} from '@chakra-ui/react'
 
 export default function ButtonForm(){
     return(
-        <Button  
+        <Button 
+            type="submit" 
             mt={'20px'} 
             mb={'20px'}
             width={'200px'} 

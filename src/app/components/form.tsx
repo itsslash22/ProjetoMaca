@@ -1,35 +1,38 @@
+'use client';
 import {
     FormControl,
     FormLabel,
     Input,
     Flex,
-    NumberInput,
     NumberInputField,
     NumberInputStepper,
     NumberIncrementStepper,
     NumberDecrementStepper,
-    Text
+    Text,
+    Button
   } from '@chakra-ui/react';
   import ButtonForm from './buttonform';
-import { SubmitHandler, useForm } from 'react-hook-form';
+  import { SubmitHandler, useForm } from 'react-hook-form'
 
-  type Inputs = {
-    weight: any
+ interface Fields {
     date: string
-  }
+    weight: number
+ }
   
   export default function Form() {
 
     const {
       register,
       handleSubmit,
-      watch,
       formState: { errors },
-    } = useForm<Inputs>()
-    const onSubmit: SubmitHandler<any> = (data) => console.log(data)
-  
-    console.log(watch("weight")) // watch input value by passing the name of it
+      reset,
+    } = useForm<Fields>()
 
+    const onSubmit: SubmitHandler<Fields> = async (data) => {
+      console.log(data)
+      // reset()
+    }
+  
 
     return (
     <>
@@ -64,7 +67,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
             >
               Fecha:
             </FormLabel>
-            <input 
+            <Input 
               defaultValue="test" {...register("date")}
               type="date" 
               w={['90%', '80%', '500px']} // Exemplo de responsividade com porcentagem e valor fixo
@@ -84,24 +87,16 @@ import { SubmitHandler, useForm } from 'react-hook-form';
               Peso(kg):
             </FormLabel>
             <FormControl>
-              <input 
-                defaultValue="test" {...register("weight")}
-                min={1} 
-                max={200}
-              >
-                <NumberInputField 
-                  width={['90%', '80%', '500px']} // Aplicando responsividade semelhante ao Input de data
-                  p="16px" 
-                  borderRadius="14px" 
-                  cursor="text" 
-                  border="none"
-                  fontSize="1rem"
-                />
-                <NumberInputStepper pr="16px">
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </input>
+              <Input
+                {...register("weight")}
+                type="number"
+                w={['90%', '80%', '500px']}
+                p="16px"
+                borderRadius="14px"
+                border="none"
+                required
+                fontSize="1rem"            
+              />
             </FormControl>
             <ButtonForm/>
           </FormControl>
@@ -113,14 +108,8 @@ import { SubmitHandler, useForm } from 'react-hook-form';
               bg="#e1142e"
               pt="2rem"
               pb="1.5rem"
-              w={'100'}>
-              <Text fontSize={'20px'} fontWeight={700}>
-                  Registro de Peso
-              </Text>
+              w={'100'}>              
           </Flex>
-
-          <button type="submit"> Enviar </button>
-
         </form>
         </>
     );
