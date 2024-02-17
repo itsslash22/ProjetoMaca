@@ -4,12 +4,7 @@ import {
     FormLabel,
     Input,
     Flex,
-    NumberInputField,
-    NumberInputStepper,
-    NumberIncrementStepper,
-    NumberDecrementStepper,
     Text,
-    Button
   } from '@chakra-ui/react';
   import ButtonForm from './buttonform';
   import { SubmitHandler, useForm } from 'react-hook-form'
@@ -20,7 +15,6 @@ import {
  }
   
   export default function Form() {
-
     const {
       register,
       handleSubmit,
@@ -31,8 +25,7 @@ import {
     const onSubmit: SubmitHandler<Fields> = async (data) => {
       console.log(data)
       // reset()
-    }
-  
+    }  
 
     return (
     <>
