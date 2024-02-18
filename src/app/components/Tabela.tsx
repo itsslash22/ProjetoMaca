@@ -22,7 +22,7 @@ export default function Tabela() {
               <Tr key={user.date} color={'#fff'}>
                 <Td textAlign={'center'} border="none" bg={''}>{user.date}</Td>
                 <Td textAlign={'center'} border="none" bg={''}>{user.weight}</Td>
-                <Td textAlign={'center'} border="none" bg={''}><ButtonTable/></Td>
+                <Td textAlign={'center'} border="none" bg={''}><ButtonTable id={user.id}/></Td>
               </Tr>
             ))}
           </Tbody>

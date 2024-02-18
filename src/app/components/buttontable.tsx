@@ -1,9 +1,22 @@
-import {Button} from '@chakra-ui/react'
+import { Button } from '@chakra-ui/react'
+import { useHistoricStore } from '../hooks/form.store';
 
+interface ButtonFormProps {
+    id: string;
+}
 
-export default function ButtonForm(){
+export default function ButtonForm({ id }: ButtonFormProps){
+
+    const { removeHistoric } = useHistoricStore()
+
+    const handlWithDeleteUserData = () => {
+        removeHistoric(id)
+        return
+    }
+
     return(
         <Button  
+            onClick={() => handlWithDeleteUserData()}
             mt={'20px'} 
             mb={'20px'}
             width={'200px'} 

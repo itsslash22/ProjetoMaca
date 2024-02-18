@@ -3,6 +3,7 @@ import { combine } from "zustand/middleware";
 import { persist } from "zustand/middleware";
 
 export interface Fields {
+  id: string;
   date: string;
   weight: number;
 }
@@ -20,6 +21,10 @@ export const useHistoricStore = create(
     combine(initialState, (set) => ({
       setHistoric: (newHistoric: Fields) =>
         set((state) => ({ historic: [...state.historic, newHistoric] })),
+      removeHistoric: (id: string) =>
+        set((state) => ({
+          historic: state.historic.filter((item) => item.id !== id),
+        })),
     })),
     {
       name: "historic", 

@@ -9,8 +9,10 @@ import {
 import ButtonForm from './buttonform';
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useHistoricStore } from '../hooks/form.store';
+import { v4 as uuidv4 } from 'uuid';
 
  export interface Fields {
+    id: string
     date: string
     weight: number
  }
@@ -25,8 +27,7 @@ import { useHistoricStore } from '../hooks/form.store';
     } = useForm<Fields>()
 
     const onSubmit: SubmitHandler<Fields> = async (data: Fields) => {
-      console.log(data)
-      // reset()
+      data.id = uuidv4()
       setHistoric(data)
     }  
 
