@@ -1,5 +1,6 @@
 import create from "zustand";
 import { combine } from "zustand/middleware";
+import { persist } from "zustand/middleware";
 
 export interface Fields {
   date: string;
@@ -15,8 +16,13 @@ const initialState: HistoricStoreState = {
 };
 
 export const useHistoricStore = create(
-  combine(initialState, (set) => ({
-    setHistoric: (newHistoric: Fields) =>
-      set((state) => ({ historic: [...state.historic, newHistoric] })),
-  }))
+  persist(
+    combine(initialState, (set) => ({
+      setHistoric: (newHistoric: Fields) =>
+        set((state) => ({ historic: [...state.historic, newHistoric] })),
+    })),
+    {
+      name: "historic", 
+    }
+  )
 );
