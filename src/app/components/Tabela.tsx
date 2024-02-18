@@ -1,12 +1,10 @@
+'use client';
 import { Table, Thead, Tbody, Tr, Th, Td, TableContainer, Box } from '@chakra-ui/react';
 import ButtonTable from './buttontable';
+import { useHistoricStore } from '../hooks/form.store';
 
 export default function Tabela() {
-  const users = [
-    { data: '00/00/2024', peso: '50kg', email: 'john@example.com' },
-    { data: '00/00/2024', peso: '55kg', email: 'jane@example.com' },
-    { data: '00/00/2024', peso: '70kg', email: 'bob@example.com' },
-  ];
+  const { historic } = useHistoricStore();
 
   return (
     <Box display="flex" justifyContent="center" alignItems="center" bg="#01262e" >
@@ -20,10 +18,10 @@ export default function Tabela() {
             </Tr>
           </Thead>
           <Tbody>
-            {users.map((user) => (
-              <Tr key={user.data} color={'#fff'}>
-                <Td textAlign={'center'} border="none" bg={''}>{user.data}</Td>
-                <Td textAlign={'center'} border="none" bg={''}>{user.peso}</Td>
+            {historic?.map((user) => (
+              <Tr key={user.date} color={'#fff'}>
+                <Td textAlign={'center'} border="none" bg={''}>{user.date}</Td>
+                <Td textAlign={'center'} border="none" bg={''}>{user.weight}</Td>
                 <Td textAlign={'center'} border="none" bg={''}><ButtonTable/></Td>
               </Tr>
             ))}

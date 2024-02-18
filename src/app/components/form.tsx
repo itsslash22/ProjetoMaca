@@ -8,6 +8,7 @@ import {
   } from '@chakra-ui/react';
 import ButtonForm from './buttonform';
 import { SubmitHandler, useForm } from 'react-hook-form'
+import { useHistoricStore } from '../hooks/form.store';
 
  export interface Fields {
     date: string
@@ -15,6 +16,7 @@ import { SubmitHandler, useForm } from 'react-hook-form'
  }
 
   export default function Form() {
+    const { setHistoric } = useHistoricStore()
     const {
       register,
       handleSubmit,
@@ -22,9 +24,10 @@ import { SubmitHandler, useForm } from 'react-hook-form'
       reset,
     } = useForm<Fields>()
 
-    const onSubmit: SubmitHandler<Fields> = async (data) => {
+    const onSubmit: SubmitHandler<Fields> = async (data: Fields) => {
       console.log(data)
       // reset()
+      setHistoric(data)
     }  
 
     return (
