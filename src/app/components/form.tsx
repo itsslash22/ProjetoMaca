@@ -9,46 +9,10 @@ import {
   import ButtonForm from './buttonform';
   import { SubmitHandler, useForm } from 'react-hook-form'
 
- interface Fields {
+ export interface Fields {
     date: string
     weight: number
  }
-  
-  /* eslint-disable no-unused-vars */
-import { createStore, useStore } from "zustand";
-import { persist } from "zustand/middleware";
-import { immer } from "zustand/middleware/immer";
-
-interface IIsHandoverState {
-  isHandover: boolean;
-}
-
-interface IIsHandover extends IIsHandoverState {
-  setIsHandover(isHandover: boolean): void;
-}
-
-const isHandoverStore = createStore<IIsHandover>()
-  persist(
-    immer<IIsHandover>((set) => ({
-      isHandover: false,
-      setIsHandover: (newStatus) => {
-        set(({ isHandover }) => {
-          return {
-            isHandover: newStatus !== undefined ? newStatus : isHandover,
-          };
-        });
-      },
-    })),
-    {
-      name: "isHandover",
-    }
-  )
-
-
-
-
-
-
 
   export default function Form() {
     const {
