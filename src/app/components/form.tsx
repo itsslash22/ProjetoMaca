@@ -6,8 +6,8 @@ import {
     Flex,
     Text,
   } from '@chakra-ui/react';
-  import ButtonForm from './buttonform';
-  import { SubmitHandler, useForm } from 'react-hook-form'
+import ButtonForm from './buttonform';
+import { SubmitHandler, useForm } from 'react-hook-form'
 
  export interface Fields {
     date: string
