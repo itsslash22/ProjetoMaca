@@ -67,7 +67,6 @@ import { v4 as uuidv4 } from 'uuid';
             <Input 
               defaultValue="test" {...register("date")}
               type="date" 
-              w={['90%', '80%', '500px']} // Exemplo de responsividade com porcentagem e valor fixo
               p="16px" 
               borderRadius="14px"
               border="none"
@@ -87,7 +86,7 @@ import { v4 as uuidv4 } from 'uuid';
               <Input
                 {...register("weight")}
                 type="number"
-                w={['90%', '80%', '500px']}
+                w={'300px'}
                 p="16px"
                 borderRadius="14px"
                 border="none"
@@ -98,15 +97,18 @@ import { v4 as uuidv4 } from 'uuid';
             <ButtonForm/>
           </FormControl>
           <Flex 
-              align="center" 
-              justify="center" 
-              color="#4A90E2" 
-              textColor="#fff" 
-              bg="#e1142e"
-              pt="2rem"
-              pb="1.5rem"
-              w={'100'}>              
-          </Flex>
+          align="center" 
+          justify="center" 
+          color="#4A90E2" 
+          textColor="#fff" 
+          bg="#e1142e"
+          pt="2rem"
+          pb="1.5rem"
+        >
+          <Text fontSize={'20px'} fontWeight={700}>
+            Registro de Peso
+          </Text>
+        </Flex>
         </form>
         </>
     );

@@ -1,5 +1,5 @@
 'use client';
-import { Table, Thead, Tbody, Tr, Th, Td, TableContainer, Box } from '@chakra-ui/react';
+import { Table, Thead, Tbody, Tr, Th, Td, TableContainer, HStack } from '@chakra-ui/react';
 import ButtonTable from './buttontable';
 import { useHistoricStore } from '../hooks/form.store';
 
@@ -7,14 +7,14 @@ export default function Tabela() {
   const { historic } = useHistoricStore();
 
   return (
-    <Box display="flex" justifyContent="center" alignItems="center" bg="#01262e" >
+    <HStack justifyContent="center" alignItems="center" bg="#01262e" >
       <TableContainer>
         <Table variant="simple">
           <Thead>
-            <Tr color="#fff">
-              <Th border="none" py="20px" px='120px' bg={'#359c00'}>Fecho</Th>
-              <Th border="none" py="20px" px='120px' bg={'#359c00'}>Peso</Th>
-              <Th border="none" py="20px" px='120px' bg={'#359c00'}>Comportamiento</Th>
+            <Tr color="#fff" m={'5px'}>
+              <Th border="none" py="20px" px={'15px'} bg={'#359c00'}>Fecho</Th>
+              <Th border="none" py="20px" px={'15px'} bg={'#359c00'}>Peso</Th>
+              <Th border="none" py="20px" px={'15px'} bg={'#359c00'}>Comportamiento</Th>
             </Tr>
           </Thead>
           <Tbody>
@@ -28,6 +28,6 @@ export default function Tabela() {
           </Tbody>
         </Table>
       </TableContainer>
-    </Box>
+    </HStack>
   );
 }
